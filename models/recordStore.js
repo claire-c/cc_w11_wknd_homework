@@ -6,24 +6,24 @@ const RecordStore = function (name) {
 
 RecordStore.prototype.addRecord = function(record) {
   this.collection.push(record);
-}
+};
 
 RecordStore.prototype.addManyRecords = function(recordArray) {
   recordArray.forEach((record) => {
     this.collection.push(record);
   });
-}
+};
 
 RecordStore.prototype.removeRecord = function(recordToRemove) {
   const recordArray = this.collection.filter((record) => {
     return record != recordToRemove;
   });
   this.collection = recordArray;
-}
+};
 
 RecordStore.prototype.inStock = function(recordToCheck) {
     return this.collection.includes(recordToCheck);
-}
+};
 
 
 module.exports = RecordStore;

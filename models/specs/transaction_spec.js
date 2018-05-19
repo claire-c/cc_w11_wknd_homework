@@ -49,27 +49,21 @@ describe('Transaction', function () {
     recordStore.addManyRecords(collection);
   });
 
-  it("can confirm there are not enough funds for collector to buy record", function () {
-    actual = transaction.checkCollectorFunds(collector, record1);
+  it("can conduct transaction between store and collector", function () {
+    collector.addFunds(5000);
+    transaction.conductTransaction(recordStore, collector, record3);
+    assert.strictEqual(collector.collection.length, 1);
+    assert.strictEqual(recordStore.collection.length, 2);
+  });
+
+  it("can decline a transaction if collector has not got enough funds", function () {
+    actual = transaction.conductTransaction(recordStore, collector, record3);
     assert.strictEqual(actual, false);
   });
 
-  it("can confirm there are enough funds for collector to buy record", function () {
-    collector.addFunds(5000);
-    actual = transaction.checkCollectorFunds(collector, record1);
-    assert.strictEqual(actual, true);
-  });
-
-  xit("can decline a transaction if collector has not got enough funds", function () {
-
-  });
-
-  xit("can decline a transaction if the record shop doesn't have the record", function () {
-
-  });
-
-  xit('should be able to sell a record to a collector from the record shop', function () {
-
+  it("can decline a transaction if the record store doesn't have the record", function () {
+    actual = transaction.conductTransaction(recordStore, collector, record4);
+    assert.strictEqual(actual, false);
   });
 
 
