@@ -22,6 +22,32 @@ Collector.prototype.findRecordByTitle = function (recordTitle) {
   return recordArray;
 }
 
+Collector.prototype.removeRecord = function (recordToRemove) {
+  recordArray = this.collection.filter((record) => {
+    return record != recordToRemove
+  });
+  this.collection = recordArray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = Collector;

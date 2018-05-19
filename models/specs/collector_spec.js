@@ -86,4 +86,9 @@ describe('Collector', function () {
     assert.strictEqual(actual.length, 0);
   });
 
+  it("should be able to remove a record from the collector's collection", function () {
+    collector.removeRecord(record4);
+    assert.strictEqual(collector.collection.length, 3);
+  });
+
 });
