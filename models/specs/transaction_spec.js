@@ -68,5 +68,15 @@ describe('Transaction', function () {
     assert.strictEqual(actual, false);
   });
 
+  it("should be able to provide a refund to a customer", function () {
+    recordStore.addFunds(5000);
+    collector.addRecord(record1);
+    transaction.conductRefund(recordStore, collector, record1);
+    assert.strictEqual(recordStore.funds, 4000);
+    assert.strictEqual(collector.funds, 1000);
+    assert.strictEqual(recordStore.collection.length, 4);
+    assert.strictEqual(collector.collection.length, 0);
+  });
+
 
 });

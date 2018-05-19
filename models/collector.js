@@ -52,5 +52,8 @@ Collector.prototype.sortRecordsByArtist = function () {
   });
 };
 
+Collector.prototype.ownsRecord = function (recordToCheck) {
+  return this.collection.includes(recordToCheck);
+};
 
 module.exports = Collector;

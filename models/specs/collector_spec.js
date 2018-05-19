@@ -123,4 +123,15 @@ describe('Collector', function () {
     assert.deepStrictEqual(actual, "Alt J");
   });
 
+  it("can check if there is a record in collection", function () {
+    collector.addRecord(record1);
+    actual = collector.ownsRecord(record1);
+    assert.strictEqual(actual, true);
+  });
+
+  it("can check if there isn't a record in collection", function () {
+    actual = collector.ownsRecord(record1);
+    assert.strictEqual(actual, false);
+  });
+
 });
