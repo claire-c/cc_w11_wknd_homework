@@ -66,6 +66,12 @@ describe('RecordStore', function () {
     assert.strictEqual(recordStore.funds, 5000);
   });
 
+  it("should be able to remove funds", function () {
+    recordStore.addFunds(5000);
+    recordStore.removeFunds(2500);
+    assert.strictEqual(recordStore.funds, 2500);
+  });
+
   it("should be able to add a record to the collection", function () {
     recordStore.addRecord(record1);
     assert.strictEqual(recordStore.collection.length, 1);

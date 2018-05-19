@@ -18,6 +18,10 @@ RecordStore.prototype.addFunds = function (funds) {
   this.funds += funds;
 };
 
+RecordStore.prototype.removeFunds = function (funds) {
+  this.funds -= funds;
+};
+
 RecordStore.prototype.removeRecord = function(recordToRemove) {
   const recordArray = this.collection.filter((record) => {
     return record != recordToRemove;
