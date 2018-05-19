@@ -84,28 +84,22 @@ describe('Collector', function () {
   });
 
   it("should be able to find record by title", function () {
-    collector.addRecord(record1);
-    collector.addRecord(record2);
-    collector.addRecord(record3);
-    collector.addRecord(record4);
+    const recordArray = [record1, record2, record3, record4];
+    collector.addManyRecords(recordArray);
     actual = collector.findRecordByTitle("Thriller");
     assert.strictEqual(actual[0].title, "Thriller");
   });
 
   it("should be able to return an empty array if there is no record by title", function () {
-    collector.addRecord(record1);
-    collector.addRecord(record2);
-    collector.addRecord(record3);
-    collector.addRecord(record4);
+    const recordArray = [record1, record2, record3, record4];
+    collector.addManyRecords(recordArray);
     actual = collector.findRecordByTitle("lizard");
     assert.strictEqual(actual.length, 0);
   });
 
   it("should be able to remove a record from the collector's collection", function () {
-    collector.addRecord(record1);
-    collector.addRecord(record2);
-    collector.addRecord(record3);
-    collector.addRecord(record4);
+    const recordArray = [record1, record2, record3, record4];
+    collector.addManyRecords(recordArray);
     collector.removeRecord(record4);
     assert.strictEqual(collector.collection.length, 3);
   });
