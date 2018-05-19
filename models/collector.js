@@ -35,6 +35,14 @@ Collector.prototype.removeRecord = function (recordToRemove) {
   this.collection = recordArray;
 }
 
+Collector.prototype.hasMoneyForRecord = function (record) {
+  if(this.funds >= record.price){
+    return true
+  } else {
+    return false
+  };
+}
+
 
 
 

@@ -104,4 +104,15 @@ describe('Collector', function () {
     assert.strictEqual(collector.collection.length, 3);
   });
 
+  it("can check if there are enough funds to buy a record - false", function () {
+    actual = collector.hasMoneyForRecord(record1);
+    assert.strictEqual(actual, false);
+  });
+
+  it("can check if there are enough funds to buy a record - true", function () {
+    collector.addFunds(5000);
+    actual = collector.hasMoneyForRecord(record1);
+    assert.strictEqual(actual, true);
+  });
+
 });
