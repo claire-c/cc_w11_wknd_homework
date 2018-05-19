@@ -4,7 +4,9 @@ const RecordStore = function (name) {
   this.collection = [];
 };
 
-
+RecordStore.prototype.addRecord = function(record) {
+  this.collection.push(record);
+}
 
 
 
