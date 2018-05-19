@@ -115,4 +115,12 @@ describe('Collector', function () {
     assert.strictEqual(actual, true);
   });
 
+  it("should be able to sort collection by artist name", function () {
+    const recordArray = [record1, record2, record3, record4];
+    collector.addManyRecords(recordArray);
+    collector.sortRecordsByArtist();
+    actual = collector.collection[0].artist;
+    assert.deepStrictEqual(actual, "Alt J");
+  });
+
 });
