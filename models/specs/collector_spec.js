@@ -57,4 +57,10 @@ describe('Collector', function () {
     assert.strictEqual(collector.funds, 5000);
   });
 
+  it("should be able to remove funds from collector", function() {
+    collector.addFunds(5000);
+    collector.removeFunds(2500);
+    assert.strictEqual(collector.funds, 2500);
+  });
+
 });

@@ -7,8 +7,9 @@ Collector.prototype.addFunds = function (funds) {
   this.funds += funds;
 }
 
-
-
+Collector.prototype.removeFunds = function (funds) {
+  this.funds -= funds;
+}
 
 
 module.exports = Collector;
