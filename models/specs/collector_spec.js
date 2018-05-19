@@ -76,4 +76,14 @@ describe('Collector', function () {
     assert.strictEqual(collector.collection.length, 5);
   });
 
+  it("should be able to find record by title", function () {
+    actual = collector.findRecordByTitle("Thriller");
+    assert.strictEqual(actual[0].title, "Thriller");
+  });
+
+  it("should be able to return an empty array if there is no record by title", function () {
+    actual = collector.findRecordByTitle("lizard");
+    assert.strictEqual(actual.length, 0);
+  });
+
 });
