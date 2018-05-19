@@ -100,6 +100,20 @@ describe('RecordStore', function () {
     assert.strictEqual(actual.length, 2);
   });
 
+  it("will return an empty array when no records of genre found", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.findRecordsByGenre("lizard");
+    assert.strictEqual(actual.length, 0);
+  })
+
+  it("can find all records by title", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.findRecordsByTitle("Thriller");
+    assert.deepStrictEqual(actual[0], record3);
+  });
+
 
 
 });

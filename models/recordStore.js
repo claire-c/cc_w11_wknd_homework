@@ -31,5 +31,11 @@ RecordStore.prototype.findRecordsByGenre = function (genre) {
   });
 };
 
+RecordStore.prototype.findRecordsByTitle = function (title) {
+  return this.collection.filter((record) => {
+    return record.title === title;
+  });
+};
+
 
 module.exports = RecordStore;
