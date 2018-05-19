@@ -28,14 +28,14 @@ describe('Collector', function () {
       title: "Thriller",
       artist: "Michael Jackson",
       genre: "pop",
-      price 1100
+      price: 1100
     });
 
     record4 = new Record({
       title: "An Awesome Wave",
       artist: "Alt J",
       genre: "indie",
-      price 2000
+      price: 2000
     });
 
     collection = [record1, record2, record3, record4];
@@ -44,6 +44,8 @@ describe('Collector', function () {
 
   });
 
-  it('should have a title', function () {
-    assert.strictEqual(record.title, 'Their Greatest Hits 1971 - 1975');
+  it('should be able to see collectors records', function () {
+    assert.strictEqual(collector.collection.length, 4);
   });
+
+});
