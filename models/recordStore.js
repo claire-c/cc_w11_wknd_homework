@@ -27,19 +27,19 @@ RecordStore.prototype.inStock = function(recordToCheck) {
 
 RecordStore.prototype.findRecordsByGenre = function (genre) {
   return this.collection.filter((record) => {
-    return record.genre === genre;
+    return record.genre.toLowerCase() === genre.toLowerCase();
   });
 };
 
 RecordStore.prototype.findRecordsByTitle = function (title) {
   return this.collection.filter((record) => {
-    return record.title === title;
+    return record.title.toLowerCase() === title.toLowerCase();
   });
 };
 
 RecordStore.prototype.findRecordsByArtist = function (artist) {
   return this.collection.filter((record) => {
-    return record.artist === artist;
+    return record.artist.toLowerCase() === artist.toLowerCase();
   });
 };
 

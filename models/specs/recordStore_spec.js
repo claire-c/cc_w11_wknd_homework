@@ -107,6 +107,13 @@ describe('RecordStore', function () {
     assert.strictEqual(actual.length, 0);
   })
 
+  it("can find all records by genre even with strange casing", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.findRecordsByGenre("ROCK");
+    assert.strictEqual(actual.length, 2);
+  });
+
   it("can find all records by title", function () {
     const recordArray = [record1, record2, record3, record4];
     recordStore.addManyRecords(recordArray);
@@ -121,6 +128,13 @@ describe('RecordStore', function () {
     assert.strictEqual(actual.length, 0);
   })
 
+  it("will return records by title even with strange casing", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.findRecordsByTitle("THRILLER");
+    assert.deepStrictEqual(actual[0], record3);
+  });
+
   it("will find all records by artist", function () {
     const recordArray = [record1, record2, record3, record4];
     recordStore.addManyRecords(recordArray);
@@ -134,6 +148,14 @@ describe('RecordStore', function () {
     actual = recordStore.findRecordsByArtist("Pink Floyd");
     assert.strictEqual(actual.length, 0);
   });
+
+  it("will find all records by artist even with strange casing", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.findRecordsByArtist("EAGLES");
+    assert.deepStrictEqual(actual[0], record1);
+  });
+
 
 
 });
