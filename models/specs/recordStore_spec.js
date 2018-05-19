@@ -79,7 +79,19 @@ describe('RecordStore', function () {
     assert.strictEqual(recordStore.collection.length, 3);
   });
 
-  
+  it("can check to see if a record is in stock - in stock", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.inStock(record1);
+    assert.strictEqual(actual, true);
+  });
+
+  it("can check to see if a record is in stock - not in stock", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.inStock(record5);
+    assert.strictEqual(actual, false);
+  });
 
 
 

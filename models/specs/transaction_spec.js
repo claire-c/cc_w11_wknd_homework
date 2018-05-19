@@ -64,6 +64,10 @@ describe('Transaction', function () {
 
   });
 
+  xit("can decline a transaction if the record shop doesn't have the record", function () {
+
+  });
+
   xit('should be able to sell a record to a collector from the record shop', function () {
 
   });

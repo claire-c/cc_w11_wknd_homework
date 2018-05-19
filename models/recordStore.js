@@ -21,5 +21,9 @@ RecordStore.prototype.removeRecord = function(recordToRemove) {
   this.collection = recordArray;
 }
 
+RecordStore.prototype.inStock = function(recordToCheck) {
+    return this.collection.includes(recordToCheck);
+}
+
 
 module.exports = RecordStore;
