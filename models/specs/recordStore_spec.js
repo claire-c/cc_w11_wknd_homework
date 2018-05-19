@@ -93,6 +93,13 @@ describe('RecordStore', function () {
     assert.strictEqual(actual, false);
   });
 
+  it("can find all records by genre", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.findRecordsByGenre("rock");
+    assert.strictEqual(actual.length, 2);
+  });
+
 
 
 });

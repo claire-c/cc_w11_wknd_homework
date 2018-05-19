@@ -25,5 +25,11 @@ RecordStore.prototype.inStock = function(recordToCheck) {
     return this.collection.includes(recordToCheck);
 };
 
+RecordStore.prototype.findRecordsByGenre = function (genre) {
+  return this.collection.filter((record) => {
+    return record.genre === genre;
+  });
+};
+
 
 module.exports = RecordStore;
