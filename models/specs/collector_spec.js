@@ -52,4 +52,9 @@ describe('Collector', function () {
     assert.strictEqual(collector.funds, 0);
   });
 
+  it("should be able to add funds to collector", function(){
+    collector.addFunds(5000);
+    assert.strictEqual(collector.funds, 5000);
+  });
+
 });

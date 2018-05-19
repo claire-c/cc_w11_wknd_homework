@@ -3,7 +3,9 @@ const Collector = function (collection) {
   this.collection = collection;
 };
 
-
+Collector.prototype.addFunds = function (funds) {
+  this.funds += funds;
+}
 
 
 
