@@ -1,6 +1,7 @@
 const Record = require('../record.js');
 const Collector = require("../collector.js");
-const RecordShop = require("../recordShop.js");
+const RecordStore = require("../recordStore.js");
+const Transaction = require("../transaction.js");
 const assert = require('assert');
 
 describe('Transaction', function () {
@@ -9,7 +10,8 @@ describe('Transaction', function () {
   let record3;
   let record4;
   let collector;
-  let recordShop;
+  let recordStore;
+  let transaction;
 
   beforeEach(function () {
     record1 = new Record({
@@ -41,12 +43,29 @@ describe('Transaction', function () {
     });
 
     collector = new Collector();
-    recordShop = new RecordShop("Backbeat Records");
+    collection = [record1, record2, record3];
+    recordStore = new RecordStore("Backbeat Records");
+    transaction = new Transaction();
+    recordStore.addManyRecords(collection);
+  });
+
+  it("can confirm there are not enough funds for collector to buy record", function () {
+    actual = transaction.checkCollectorFunds(collector, record1);
+    assert.strictEqual(actual, false);
+  });
+
+  it("can confirm there are enough funds for collector to buy record", function () {
+    collector.addFunds(5000);
+    actual = transaction.checkCollectorFunds(collector, record1);
+    assert.strictEqual(actual, true);
+  });
+
+  xit("can decline a transaction if collector has not got enough funds", function () {
 
   });
 
-  it('should be able to sell a record to a collector from the record shop', function () {
-    
+  xit('should be able to sell a record to a collector from the record shop', function () {
+
   });
 
 

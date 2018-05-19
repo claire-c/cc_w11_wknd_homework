@@ -2,6 +2,14 @@ const Transaction = function () {
 
 };
 
-Transaction.prototype.sellRecordToCollector()
+Transaction.prototype.checkCollectorFunds = function (collector, record) {
+  if(collector.funds >= record.price){
+    return true
+  } else {
+    return false
+  };
+}
+
+
 
 module.exports = Transaction;
