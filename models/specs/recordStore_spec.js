@@ -53,6 +53,14 @@ describe('RecordStore', function () {
     assert.strictEqual(recordStore.name, "Backbeat Records");
   });
 
+  it("should start with an empty collection of records", function () {
+    assert.strictEqual(recordStore.collection.length, 0);
+  });
+
+  it("should start with empty funds", function () {
+    assert.strictEqual(recordStore.funds, 0);
+  });
+
 
 
 });
