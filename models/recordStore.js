@@ -8,6 +8,11 @@ RecordStore.prototype.addRecord = function(record) {
   this.collection.push(record);
 }
 
+RecordStore.prototype.addManyRecords = function(recordArray) {
+  recordArray.forEach((record) => {
+    this.collection.push(record);
+  });
+}
 
 
 module.exports = RecordStore;

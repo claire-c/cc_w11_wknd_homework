@@ -64,7 +64,13 @@ describe('RecordStore', function () {
   it("should be able to add a record to the collection", function () {
     recordStore.addRecord(record1);
     assert.strictEqual(recordStore.collection.length, 1);
-  })
+  });
+
+  it("should be able to add many records to the collection", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    assert.strictEqual(recordStore.collection.length, 4);
+  });
 
 
 
