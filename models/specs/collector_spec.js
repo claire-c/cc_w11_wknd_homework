@@ -9,6 +9,7 @@ describe('Collector', function () {
   let record4;
   let record5;
   let collector;
+  let fullCollector;
 
   beforeEach(function () {
     record1 = new Record({
@@ -46,14 +47,13 @@ describe('Collector', function () {
       price: 1000
     });
 
-    collection = [record1, record2, record3, record4];
+    collector = new Collector();
 
-    collector = new Collector(collection);
 
   });
 
-  it('should be able to see collectors records', function () {
-    assert.strictEqual(collector.collection.length, 4);
+  it("should start with empty record collection", function() {
+    assert.strictEqual(collector.collection.length, 0);
   });
 
   it("should be able to see empty funds", function() {
@@ -73,20 +73,39 @@ describe('Collector', function () {
 
   it("should be able to add record to collector's collection", function(){
     collector.addRecord(record5);
-    assert.strictEqual(collector.collection.length, 5);
+    assert.strictEqual(collector.collection.length, 1);
+  });
+
+  it("should be able to add many records to a collector's collection", function(){
+    const recordArray = [record1, record2, record3, record4];
+    collector.addManyRecords(recordArray);
+    assert.strictEqual(collector.collection.length, 4);
+
   });
 
   it("should be able to find record by title", function () {
+    collector.addRecord(record1);
+    collector.addRecord(record2);
+    collector.addRecord(record3);
+    collector.addRecord(record4);
     actual = collector.findRecordByTitle("Thriller");
     assert.strictEqual(actual[0].title, "Thriller");
   });
 
   it("should be able to return an empty array if there is no record by title", function () {
+    collector.addRecord(record1);
+    collector.addRecord(record2);
+    collector.addRecord(record3);
+    collector.addRecord(record4);
     actual = collector.findRecordByTitle("lizard");
     assert.strictEqual(actual.length, 0);
   });
 
   it("should be able to remove a record from the collector's collection", function () {
+    collector.addRecord(record1);
+    collector.addRecord(record2);
+    collector.addRecord(record3);
+    collector.addRecord(record4);
     collector.removeRecord(record4);
     assert.strictEqual(collector.collection.length, 3);
   });

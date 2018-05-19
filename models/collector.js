@@ -1,6 +1,6 @@
-const Collector = function (collection) {
+const Collector = function () {
   this.funds = 0;
-  this.collection = collection;
+  this.collection = [];
 };
 
 Collector.prototype.addFunds = function (funds) {
@@ -13,6 +13,12 @@ Collector.prototype.removeFunds = function (funds) {
 
 Collector.prototype.addRecord = function (record) {
   this.collection.push(record);
+}
+
+Collector.prototype.addManyRecords = function (recordArray) {
+  recordArray.forEach((record) => {
+    this.collection.push(record);
+  });
 }
 
 Collector.prototype.findRecordByTitle = function (recordTitle) {
