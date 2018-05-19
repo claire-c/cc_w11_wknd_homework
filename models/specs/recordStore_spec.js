@@ -114,6 +114,26 @@ describe('RecordStore', function () {
     assert.deepStrictEqual(actual[0], record3);
   });
 
+  it("will return an empty array when no titles found", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.findRecordsByTitle("lizard");
+    assert.strictEqual(actual.length, 0);
+  })
+
+  it("will find all records by artist", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.findRecordsByArtist("Eagles");
+    assert.deepStrictEqual(actual[0], record1);
+  });
+
+  it("will return an empty array when no artists found", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    actual = recordStore.findRecordsByArtist("Pink Floyd");
+    assert.strictEqual(actual.length, 0);
+  });
 
 
 });

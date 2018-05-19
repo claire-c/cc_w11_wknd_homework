@@ -37,5 +37,10 @@ RecordStore.prototype.findRecordsByTitle = function (title) {
   });
 };
 
+RecordStore.prototype.findRecordsByArtist = function (artist) {
+  return this.collection.filter((record) => {
+    return record.artist === artist;
+  });
+};
 
 module.exports = RecordStore;
