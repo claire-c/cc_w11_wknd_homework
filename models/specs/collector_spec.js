@@ -48,4 +48,8 @@ describe('Collector', function () {
     assert.strictEqual(collector.collection.length, 4);
   });
 
+  it("should be able to see empty funds", function() {
+    assert.strictEqual(collector.funds, 0);
+  });
+
 });
