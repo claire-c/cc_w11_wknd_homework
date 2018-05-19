@@ -7,6 +7,7 @@ describe('Collector', function () {
   let record2;
   let record3;
   let record4;
+  let record5;
   let collector;
 
   beforeEach(function () {
@@ -38,6 +39,13 @@ describe('Collector', function () {
       price: 2000
     });
 
+    record5 = new Record({
+      title: "Backspace Unwind",
+      artist: "Lamb",
+      genre: "electronic",
+      price: 1000
+    });
+
     collection = [record1, record2, record3, record4];
 
     collector = new Collector(collection);
@@ -61,6 +69,11 @@ describe('Collector', function () {
     collector.addFunds(5000);
     collector.removeFunds(2500);
     assert.strictEqual(collector.funds, 2500);
+  });
+
+  it("should be able to add record to collector's collection", function(){
+    collector.addRecord(record5);
+    assert.strictEqual(collector.collection.length, 5);
   });
 
 });

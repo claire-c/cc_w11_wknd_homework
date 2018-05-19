@@ -11,5 +11,9 @@ Collector.prototype.removeFunds = function (funds) {
   this.funds -= funds;
 }
 
+Collector.prototype.addRecord = function (record) {
+  this.collection.push(record);
+}
+
 
 module.exports = Collector;
