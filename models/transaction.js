@@ -10,6 +10,8 @@ Transaction.prototype.conductTransaction = function (recordStore, collector, rec
   if(recordStore.inStock(record) && collector.hasMoneyForRecord(record)){
       recordStore.removeRecord(record);
       collector.addRecord(record);
+      collector.removeFunds(record.price);
+      recordStore.addFunds(record.price);
   } else {
     return false;
   };

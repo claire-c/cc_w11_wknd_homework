@@ -54,6 +54,8 @@ describe('Transaction', function () {
     transaction.conductTransaction(recordStore, collector, record3);
     assert.strictEqual(collector.collection.length, 1);
     assert.strictEqual(recordStore.collection.length, 2);
+    assert.strictEqual(recordStore.funds, 1100);
+    assert.strictEqual(collector.funds, 3900);
   });
 
   it("can decline a transaction if collector has not got enough funds", function () {
