@@ -72,6 +72,15 @@ describe('RecordStore', function () {
     assert.strictEqual(recordStore.collection.length, 4);
   });
 
+  it("should be able to remove a record", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    recordStore.removeRecord(record1);
+    assert.strictEqual(recordStore.collection.length, 3);
+  });
+
+  
+
 
 
 });

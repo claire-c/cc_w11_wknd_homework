@@ -14,5 +14,12 @@ RecordStore.prototype.addManyRecords = function(recordArray) {
   });
 }
 
+RecordStore.prototype.removeRecord = function(recordToRemove) {
+  const recordArray = this.collection.filter((record) => {
+    return record != recordToRemove;
+  });
+  this.collection = recordArray;
+}
+
 
 module.exports = RecordStore;

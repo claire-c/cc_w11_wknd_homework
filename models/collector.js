@@ -22,14 +22,14 @@ Collector.prototype.addManyRecords = function (recordArray) {
 }
 
 Collector.prototype.findRecordByTitle = function (recordTitle) {
-  recordArray = this.collection.filter((record) => {
+  const recordArray = this.collection.filter((record) => {
     return record.title === recordTitle;
   });
   return recordArray;
 }
 
 Collector.prototype.removeRecord = function (recordToRemove) {
-  recordArray = this.collection.filter((record) => {
+  const recordArray = this.collection.filter((record) => {
     return record != recordToRemove
   });
   this.collection = recordArray;
