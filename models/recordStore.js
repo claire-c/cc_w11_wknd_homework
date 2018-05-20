@@ -51,4 +51,55 @@ RecordStore.prototype.findRecordsByArtist = function (artist) {
   });
 };
 
+//To check that the search object's keys match the record keys.
+RecordStore.prototype.searchKeysMatch = function (searchTerm, record) {
+  const searchTermKeysArray = Object.keys(searchTerm);
+  const booleanArray = [];
+
+  searchTermKeysArray.forEach((searchKey) => {
+    if (searchTerm[searchKey] === record[searchKey]) {
+      booleanArray.push("true");
+    } else {
+    booleanArray.push("false");
+  }
+  });
+  return booleanArray.every((string) => {
+    return string === "true";
+  });
+}
+
+// (Object.keys(searchTerm).forEach((searchKey) => {
+//   if (searchTerm[searchKey] != record[searchKey]) {
+//     return false
+//   }
+// })
+// return true;
+
+
+// RecordStore.prototype.search = function (searchTerm) {
+//   //Object.keys(searchTerm) will get the keys of the search term in an array.
+//   //Object.values(searchTerm) will get the values of the search term in an array.
+//   const matchedSearchTerms = [];
+//   this.collection.forEach((record) => {
+//     if (Object.values(searchTerm).includes(record.title || record.artist || record.genre || record.price){
+//       matchedSearchTerms.push(record);
+//     } )
+//   });
+//   return matchedSearchTerms;
+// }
+
+// RecordStore.prototype.search = function (searchTerm) {
+//   const matchedSearchTerms = [];
+//   this.collection.forEach((record) => {
+//     if (haveAMatch(searchTerm, record)){
+//       matchedSearchTerms.push(record);
+//     } )
+//   });
+//   return matchedSearchTerms;
+// }
+
+//
+
+
+
 module.exports = RecordStore;

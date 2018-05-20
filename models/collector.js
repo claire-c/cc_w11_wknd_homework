@@ -36,11 +36,7 @@ Collector.prototype.removeRecord = function (recordToRemove) {
 };
 
 Collector.prototype.hasMoneyForRecord = function (record) {
-  if(this.funds >= record.price){
-    return true
-  } else {
-    return false
-  };
+  return this.funds >= record.price;
 };
 
 //Have used a ternary here - see array sort method on docs for full if statement.

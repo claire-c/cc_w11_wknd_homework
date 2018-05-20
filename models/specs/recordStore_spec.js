@@ -167,6 +167,32 @@ describe('RecordStore', function () {
     assert.deepStrictEqual(actual[0], record1);
   });
 
+  it("should be able to tell if a record's keys matches a search object's keys - true", function () {
+    const searchTerm = {genre: "rock", artist: "Eagles"};
+    actual = recordStore.searchKeysMatch(searchTerm, record1);
+    assert.strictEqual(actual, true);
+  });
 
+  it("should be able to tell if a record's keys matches a search object's keys - false", function () {
+    const searchTerm = {genre: "roc", artist: "Eagles"};
+    actual = recordStore.searchKeysMatch(searchTerm, record1);
+    assert.strictEqual(actual, false);
+  });
+
+  xit("should be able to find all records by single property", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    const searchTerm = {genre: "rock"};
+    actual = recordStore.search(searchTerm);
+    assert.strictEqual(actual.length, 2);
+  });
+
+  xit("should be able to find all records by multiple properties", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    const searchTerm = {title: "Thriller", artist: "Michael Jackson"};
+    actual = recordStore.search(searchTerm);
+    assert.deepStrictEqual(actual[0], record3);
+  });
 
 });
