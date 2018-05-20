@@ -201,4 +201,20 @@ describe('RecordStore', function () {
     assert.deepStrictEqual(actual[0], record3);
   });
 
+  it("should be able to return an empty array if search term is not found", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    const searchTerm = {rabbit: "Peter"};
+    actual = recordStore.search(searchTerm);
+    assert.strictEqual(actual.length, 0);
+  });
+
+  it("should be able to return an empty array if search term is not found on multiple properties", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    const searchTerm = {rabbit: "Peter", artist: "Eagles"};
+    actual = recordStore.search(searchTerm);
+    assert.strictEqual(actual.length, 0);
+  });
+
 });
