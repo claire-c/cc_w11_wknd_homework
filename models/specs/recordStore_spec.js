@@ -167,19 +167,25 @@ describe('RecordStore', function () {
     assert.deepStrictEqual(actual[0], record1);
   });
 
-  it("should be able to tell if a record's keys matches a search object's keys - true", function () {
+  it("should be able to tell if a record's keys and values matches a search object's keys and values - true", function () {
     const searchTerm = {genre: "rock", artist: "Eagles"};
     actual = recordStore.searchKeysMatch(searchTerm, record1);
     assert.strictEqual(actual, true);
   });
 
-  it("should be able to tell if a record's keys matches a search object's keys - false", function () {
+  it("should be able to tell if a record's keys and values matches a search object's keys and values - false", function () {
     const searchTerm = {genre: "roc", artist: "Eagles"};
     actual = recordStore.searchKeysMatch(searchTerm, record1);
     assert.strictEqual(actual, false);
   });
 
-  xit("should be able to find all records by single property", function () {
+  it("should be able to tell if a record's keys and values matches a search object's keys and values - another false", function () {
+    const searchTerm = {gene: "rock", artist: "Eagles"};
+    actual = recordStore.searchKeysMatch(searchTerm, record1);
+    assert.strictEqual(actual, false);
+  });
+
+  it("should be able to find all records by single property - true", function () {
     const recordArray = [record1, record2, record3, record4];
     recordStore.addManyRecords(recordArray);
     const searchTerm = {genre: "rock"};
@@ -187,7 +193,7 @@ describe('RecordStore', function () {
     assert.strictEqual(actual.length, 2);
   });
 
-  xit("should be able to find all records by multiple properties", function () {
+  it("should be able to find all records by multiple properties - true", function () {
     const recordArray = [record1, record2, record3, record4];
     recordStore.addManyRecords(recordArray);
     const searchTerm = {title: "Thriller", artist: "Michael Jackson"};
