@@ -134,4 +134,9 @@ describe('Collector', function () {
     assert.strictEqual(actual, false);
   });
 
+  it("should be able to buy a record from a record store", function () {
+    collector.buyRecord(record1);
+    assert.strictEqual(collector.collection.length, 1);
+  });
+
 });

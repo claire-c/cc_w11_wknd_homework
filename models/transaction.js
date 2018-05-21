@@ -3,11 +3,9 @@ const Transaction = function () {
 };
 
 Transaction.prototype.conductTransaction = function (recordStore, collector, record) {
-  if(recordStore.inStock(record) && collector.hasMoneyForRecord(record)){
-      recordStore.removeRecord(record);
-      collector.addRecord(record);
-      collector.removeFunds(record.price);
-      recordStore.addFunds(record.price);
+  if(this.proceedTransaction(recordStore, collector, record)){
+      recordStore.sellRecord(record);
+      collector.buyRecord(record);
   } else {
       return false;
   }
@@ -24,5 +22,13 @@ Transaction.prototype.conductRefund = function (recordStore, collector, record) 
     return false;
   }
 };
+
+Transaction.prototype.proceedTransaction = function (recordStore, collector, record) {
+  return recordStore.inStock(record) && collector.hasMoneyForRecord(record);
+}
+
+Transaction.prototype.proceedRefund = function (recordStore, collector, record) {
+  return recordStore.canRefund(record) && collector.ownsRecord(record);
+}
 
 module.exports = Transaction;

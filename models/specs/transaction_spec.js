@@ -78,5 +78,41 @@ describe('Transaction', function () {
     assert.strictEqual(collector.collection.length, 0);
   });
 
+  it("should be able to proceed a transaction", function () {
+    collector.addFunds(4000);
+    actual = transaction.proceedTransaction(recordStore, collector, record1);
+    assert.strictEqual(actual, true);
+  });
+
+  it("should be able to stop a transaction if collector has no funds", function () {
+    actual = transaction.proceedTransaction(recordStore, collector, record1);
+    assert.strictEqual(actual, false);
+  })
+
+  it("should be able to stop a transaction if record store doesn't have record", function (){
+    collector.addFunds(4000);
+    actual = transaction.proceedTransaction(recordStore, collector, record4);
+    assert.strictEqual(actual, false);
+  })
+
+  it("should be able to continue a refund", function () {
+    recordStore.addFunds(5000);
+    collector.addRecord(record1);
+    actual = transaction.proceedRefund(recordStore, collector, record1);
+    assert.strictEqual(actual, true);
+  })
+
+  it("should be able to stop a refund if record store doesn't have funds", function () {
+    collector.addRecord(record1);
+    actual = transaction.proceedRefund(recordStore, collector, record1);
+    assert.strictEqual(actual, false);
+  })
+
+  it("should be able to stop a refund if collector doesn't have record in collection", function () {
+    recordStore.addFunds(5000);
+    actual = transaction.proceedRefund(recordStore, collector, record1);
+    assert.strictEqual(actual, false);
+  })
+
 
 });

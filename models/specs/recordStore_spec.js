@@ -217,4 +217,17 @@ describe('RecordStore', function () {
     assert.strictEqual(actual.length, 0);
   });
 
+  it("should be able to sell record", function () {
+    const recordArray = [record1, record2, record3, record4];
+    recordStore.addManyRecords(recordArray);
+    recordStore.sellRecord(record1);
+    assert.strictEqual(recordStore.collection.length, 3);
+  });
+
+  it("should be able to refund a record", function () {
+    recordStore.addFunds(5000);
+    actual = recordStore.canRefund(record1);
+    assert.strictEqual(actual, true);
+  })
+
 });
