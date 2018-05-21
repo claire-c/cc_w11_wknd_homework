@@ -12,7 +12,7 @@ Transaction.prototype.conductTransaction = function (recordStore, collector, rec
 };
 
 Transaction.prototype.conductRefund = function (recordStore, collector, record) {
-  if (recordStore.funds >= record.price && collector.ownsRecord(record)){
+  if (this.proceedRefund(recordStore, collector, record)){
     recordStore.removeFunds(record.price);
     collector.addFunds(record.price);
     recordStore.collection.push(record);
