@@ -51,6 +51,8 @@ RecordStore.prototype.findRecordsByArtist = function (artist) {
   });
 };
 
+
+
 //To check that the search object's keys and values match the record keys and values.
 RecordStore.prototype.searchKeysMatch = function (searchTerm, record) {
   const searchTermKeysArray = Object.keys(searchTerm);
@@ -58,13 +60,13 @@ RecordStore.prototype.searchKeysMatch = function (searchTerm, record) {
 
   searchTermKeysArray.forEach((searchKey) => {
     if (searchTerm[searchKey] === record[searchKey]) {
-      stringArray.push("true");
+      stringArray.push(true);
     } else {
-    stringArray.push("false");
+    stringArray.push(false);
   }
   });
   return stringArray.every((string) => {
-    return string === "true";
+    return string === true;
   });
 }
 
@@ -77,6 +79,7 @@ RecordStore.prototype.search = function (searchTerm) {
     }
   });
   return matchedSearchTerms;
+
 }
 
 

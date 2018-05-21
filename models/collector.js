@@ -42,8 +42,8 @@ Collector.prototype.hasMoneyForRecord = function (record) {
 //Have used a ternary here - see array sort method on docs for full if statement.
 Collector.prototype.sortRecordsByArtist = function () {
   this.collection.sort((record1, record2) => {
-    var artistA = record1.artist;
-    var artistB = record2.artist;
+    var artistA = record1.artist.toLowerCase();
+    var artistB = record2.artist.toLowerCase();
     return (artistA < artistB) ? -1 : (artistA > artistB) ? 1 : 0;
   });
 };
